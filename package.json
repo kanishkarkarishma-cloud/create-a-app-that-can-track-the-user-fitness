@@ -1,0 +1,28 @@
+{
+  "name": "igot-karmayogi-portal",
+  "version": "1.0.0",
+  "description": "iGOT Karmayogi Bharat - National Capacity Building Portal Replica & LMS for Civil Services (SIH Project)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "igot-karmayogi",
+    "mission-karmayogi",
+    "civil-services",
+    "e-learning",
+    "lms",
+    "frac-framework",
+    "sih"
+  ],
+  "author": "SIH Team",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
+  }
+}

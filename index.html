@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iGOT Karmayogi Bharat | National Portal for Civil Services Capacity Building</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1B357D',
+            navyDeep: '#10214D',
+            saffron: '#F37023',
+            saffronLight: '#FF9933',
+            govGreen: '#138808',
+            gold: '#C59B27'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛</text></svg>" />
+</head>
+<body class="font-scale-md antialiased min-h-screen flex flex-col bg-slate-50 selection:bg-amber-200 selection:text-blue-900">
+
+  <!-- ================= TOP TIRANGA STRIPE ================= -->
+  <div class="tiranga-stripe"></div>
+
+  <!-- ================= ACCESSIBILITY & GOI HEADER ================= -->
+  <header class="bg-white border-b border-slate-200 text-slate-700 text-xs py-2 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <!-- GOI Hierarchy -->
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-800">भारत सरकार</span>
+        <span class="text-slate-300">|</span>
+        <span class="font-medium text-slate-600">Government of India</span>
+        <span class="hidden md:inline text-slate-300">|</span>
+        <span class="hidden md:inline text-slate-500">Department of Personnel & Training (DoPT)</span>
+      </div>
+
+      <!-- Accessibility & Language Tools (GIGW Compliant) -->
+      <div class="flex items-center gap-4 text-[11px]">
+        <!-- Skip to content -->
+        <a href="#mainContent" class="hover:text-blue-800 font-semibold focus:outline-none focus:ring-1 focus:ring-blue-600">
+          Skip to Main Content
+        </a>
+
+        <!-- Font Size Controls -->
+        <div class="flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+          <button id="fontDecrease" title="Decrease Font Size" class="px-1.5 font-bold hover:text-blue-800">A-</button>
+          <button id="fontDefault" title="Standard Font Size" class="px-1.5 font-bold hover:text-blue-800">A</button>
+          <button id="fontIncrease" title="Increase Font Size" class="px-1.5 font-bold hover:text-blue-800">A+</button>
+        </div>
+
+        <!-- High Contrast Mode Toggle -->
+        <button id="contrastToggle" title="Toggle High Contrast for Accessibility" class="flex items-center gap-1 bg-slate-100 hover:bg-slate-200 px-2 py-0.5 rounded border border-slate-200 font-semibold">
+          <span>◑</span>
+          <span class="hidden sm:inline">High Contrast</span>
+        </button>
+
+        <!-- Language Switcher -->
+        <select id="langSelect" class="bg-slate-100 border border-slate-200 rounded px-2 py-0.5 font-semibold text-slate-800 focus:outline-none">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="ta">தமிழ் (Tamil)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= PRIMARY NAVIGATION BAR ================= -->
+  <nav class="bg-white sticky top-0 z-40 shadow-sm border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Emblems -->
+      <div class="flex items-center gap-3 cursor-pointer" onclick="document.getElementById('navHomeBtn').click()">
+        <!-- Ashoka Pillar Lion Capital Emblem -->
+        <div class="w-12 h-12 flex-shrink-0">
+          <svg viewBox="0 0 100 100" class="w-full h-full text-navy">
+            <circle cx="50" cy="50" r="46" fill="#F8FAFC" stroke="#C59B27" stroke-width="2"/>
+            <text x="50" y="44" font-size="26" text-anchor="middle" fill="#1B357D">🦁</text>
+            <text x="50" y="68" font-size="8.5" text-anchor="middle" fill="#1B357D" font-weight="bold">सत्यमेव जयते</text>
+            <text x="50" y="82" font-size="6.5" text-anchor="middle" fill="#64748B" font-weight="semibold">GOVT OF INDIA</text>
+          </svg>
+        </div>
+
+        <!-- Karmayogi Bharat Branding -->
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-xl sm:text-2xl font-black text-navy tracking-tight">iGOT</span>
+            <span class="text-xl sm:text-2xl font-black text-saffron tracking-tight">KARMAYOGI</span>
+            <span class="text-[10px] font-bold bg-amber-100 text-amber-900 px-1.5 py-0.5 rounded">BHARAT</span>
+          </div>
+          <p class="text-[10px] sm:text-[11px] font-semibold text-slate-500 tracking-wide uppercase">
+            National Capacity Building Platform • Mission Karmayogi
+          </p>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-700">
+        <button id="navHomeBtn" class="nav-link text-navy active">Home</button>
+        <button id="navLearnBtn" class="nav-link hover:text-navy">Explore Courses</button>
+        <button onclick="document.getElementById('curatedSection').scrollIntoView({behavior:'smooth'})" class="nav-link hover:text-navy">Curated Programs</button>
+        <button onclick="document.getElementById('fracSection').scrollIntoView({behavior:'smooth'})" class="nav-link hover:text-navy">FRAC Competencies</button>
+        <button onclick="document.getElementById('webinarSection').scrollIntoView({behavior:'smooth'})" class="nav-link hover:text-navy">Karmayogi Talks</button>
+        <button id="navDashboardBtn" class="nav-link text-saffron hover:text-orange-700 flex items-center gap-1">
+          <span>Learner Portal</span>
+          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+        </button>
+      </div>
+
+      <!-- Auth Actions & Profile Switcher -->
+      <div id="authNavContainer" class="flex items-center gap-2 sm:gap-3">
+        <!-- Logged-Out Actions: Register & Login -->
+        <button 
+          id="navRegisterBtn"
+          onclick="window.openRegisterModal()"
+          class="border border-saffron text-saffron hover:bg-saffron hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
+        >
+          <span>✍️ Register</span>
+        </button>
+
+        <button 
+          id="navLoginBtn" 
+          onclick="window.openLoginModal()"
+          class="bg-navy hover:bg-navyDeep text-white px-4 py-2 rounded-xl text-xs font-bold shadow-md hover:shadow-lg transition flex items-center gap-1.5"
+        >
+          <span>🔐 Log In</span>
+          <span class="text-amber-300 font-medium hidden sm:inline">/ Parichay</span>
+        </button>
+
+        <!-- Logged-In Profile Group (Toggled via JS) -->
+        <div id="navLoggedInGroup" class="hidden flex items-center gap-2">
+          <button 
+            onclick="document.getElementById('navDashboardBtn').click()"
+            class="flex items-center gap-2 bg-blue-50 hover:bg-blue-100 text-navy px-3 py-1.5 rounded-xl text-xs font-bold border border-blue-200 transition"
+          >
+            <span id="navOfficerName">👤 Shri Rajesh Kumar</span>
+            <span id="karmaBadgeCount" class="bg-amber-400 text-blue-950 px-2 py-0.5 rounded-full text-[10px] font-extrabold">1840 Pts</span>
+          </button>
+          <button 
+            onclick="window.handleLogout()"
+            title="Log Out of Portal"
+            class="px-2.5 py-1.5 text-xs text-red-600 hover:bg-red-50 rounded-xl border border-red-200 font-bold transition"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= MAIN CONTAINER ================= -->
+  <main id="mainContent" class="flex-1">
+
+    <!-- ============================================================== -->
+    <!-- VIEW 1: PUBLIC LANDING PORTAL (iGOT Karmayogi Homepage)        -->
+    <!-- ============================================================== -->
+    <div id="homeView">
+      
+      <!-- HERO BANNER SECTION -->
+      <section class="relative bg-gradient-to-br from-[#10214D] via-[#1B357D] to-[#146696] text-white py-14 px-4 sm:px-8 overflow-hidden">
+        <!-- Ashoka Chakra Background Decoration -->
+        <div class="absolute -right-24 -top-24 w-96 h-96 opacity-10 pointer-events-none">
+          <svg viewBox="0 0 100 100" class="w-full h-full text-white animate-spin" style="animation-duration: 90s;">
+            <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="2" fill="none" />
+            <circle cx="50" cy="50" r="8" fill="currentColor" />
+            <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" stroke-width="1.5" />
+            <line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+          <div class="max-w-3xl">
+            <!-- National Tag -->
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-bold text-amber-300 mb-6 uppercase tracking-wider">
+              <span>🇮🇳</span>
+              <span>National Programme for Civil Services Capacity Building</span>
+            </div>
+
+            <h1 id="heroMainTitle" class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-4 tracking-tight">
+              Empowering Civil Servants for a <span class="text-amber-400">Viksit Bharat 2047</span>
+            </h1>
+
+            <p id="heroSubTitle" class="text-sm sm:text-base text-slate-200 mb-8 font-normal leading-relaxed max-w-2xl">
+              Transition from "Rule-Based" to "Role-Based" governance through lifelong, competency-aligned digital learning, continuous professional growth, and transparent citizen-centric administration.
+            </p>
+
+            <!-- Search Bar (What do you want to learn today?) -->
+            <div class="bg-white p-2 rounded-2xl shadow-2xl flex flex-col sm:flex-row items-center gap-2 max-w-2xl mb-8">
+              <div class="flex items-center gap-3 px-3 flex-1 w-full text-slate-600">
+                <span class="text-slate-400 text-lg">🔍</span>
+                <input 
+                  type="text" 
+                  id="courseSearchInput" 
+                  placeholder="What do you want to learn today? (e.g., Ethics, GeM, RTI, AI, PoSH)" 
+                  class="w-full text-xs sm:text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none py-1"
+                />
+              </div>
+              <button 
+                onclick="document.getElementById('coursesSection').scrollIntoView({behavior:'smooth'})" 
+                class="w-full sm:w-auto px-6 py-3 bg-saffron hover:bg-orange-600 text-white text-xs font-bold rounded-xl transition shadow flex items-center justify-center gap-2"
+              >
+                <span>Search Courses</span>
+                <span>→</span>
+              </button>
+            </div>
+
+            <!-- Quick Action Links -->
+            <div class="flex flex-wrap items-center gap-3 text-xs">
+              <span class="text-slate-300 font-semibold">Popular Searches:</span>
+              <button onclick="window.askSarthiQuick('Tell me about Code of Conduct and Ethics')" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium backdrop-blur-sm transition">
+                Ethics Rules
+              </button>
+              <button onclick="window.askSarthiQuick('Explain GeM 4.0 Procurement rules')" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium backdrop-blur-sm transition">
+                GeM Procurement
+              </button>
+              <button onclick="window.askSarthiQuick('What is the FRAC framework?')" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium backdrop-blur-sm transition">
+                FRAC Model
+              </button>
+              <button onclick="window.askSarthiQuick('How to get verified certificate?')" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium backdrop-blur-sm transition">
+                Certification
+              </button>
+            </div>
+
+            <!-- Hero Login / Register Action Buttons -->
+            <div class="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center gap-4">
+              <button 
+                onclick="window.openLoginModal()" 
+                class="px-5 py-3 bg-white text-navy hover:bg-amber-400 hover:text-blue-950 font-bold text-xs rounded-xl shadow-lg transition flex items-center gap-2"
+              >
+                <span>🔐 Civil Servant Login (Parichay SSO)</span>
+                <span>→</span>
+              </button>
+              <button 
+                onclick="window.openRegisterModal()" 
+                class="px-5 py-3 bg-saffron hover:bg-orange-600 text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center gap-2"
+              >
+                <span>✍️ Register as New Civil Servant</span>
+              </button>
+              <div class="text-[11px] text-slate-300 flex items-center gap-1.5">
+                <span class="text-amber-300">✓</span>
+                <span>Instant access with any official @gov.in or @nic.in email</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- IMPACT STATS COUNTER BAR -->
+      <section class="bg-white border-b border-slate-200 py-6 px-4 sm:px-8 shadow-sm">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+          <div class="p-2">
+            <div class="text-2xl font-black text-navy">4.2+ Cr</div>
+            <div class="text-xs font-bold text-slate-500 uppercase mt-0.5">Course Enrollments</div>
+          </div>
+          <div class="p-2 border-l border-slate-100">
+            <div class="text-2xl font-black text-saffron">28.5+ L</div>
+            <div class="text-xs font-bold text-slate-500 uppercase mt-0.5">Learners Onboarded</div>
+          </div>
+          <div class="p-2 border-l border-slate-100">
+            <div class="text-2xl font-black text-navy">1,520+</div>
+            <div class="text-xs font-bold text-slate-500 uppercase mt-0.5">Curated Courses</div>
+          </div>
+          <div class="p-2 border-l border-slate-100">
+            <div class="text-2xl font-black text-govGreen">1,240+</div>
+            <div class="text-xs font-bold text-slate-500 uppercase mt-0.5">Ministries & Depts</div>
+          </div>
+          <div class="p-2 border-l border-slate-100">
+            <div class="text-2xl font-black text-navy">910+</div>
+            <div class="text-xs font-bold text-slate-500 uppercase mt-0.5">FRAC Competencies</div>
+          </div>
+          <div class="p-2 border-l border-slate-100">
+            <div class="text-2xl font-black text-amber-600">85+</div>
+            <div class="text-xs font-bold text-slate-500 uppercase mt-0.5">Apex Training Academies</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CURATED FLAGSHIP PROGRAMS -->
+      <section id="curatedSection" class="py-12 px-4 sm:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-saffron mb-1">
+              National Priority Tracks
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-navy">
+              Curated Capacity Building Programs
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">
+              Structured multi-module learning pathways created in coordination with the Capacity Building Commission (CBC).
+            </p>
+          </div>
+          <button onclick="document.getElementById('coursesSection').scrollIntoView({behavior:'smooth'})" class="mt-4 md:mt-0 text-xs font-bold text-navy hover:text-saffron transition flex items-center gap-1">
+            <span>View All Programs</span>
+            <span>→</span>
+          </button>
+        </div>
+
+        <div id="curatedProgramsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+      <!-- FRAC COMPETENCY FRAMEWORK & COURSE EXPLORER -->
+      <section id="coursesSection" class="py-12 px-4 sm:px-8 bg-slate-100/70 border-t border-b border-slate-200">
+        <div class="max-w-7xl mx-auto">
+          
+          <div class="text-center max-w-2xl mx-auto mb-8">
+            <span class="text-xs font-bold uppercase tracking-wider text-saffron">
+              FRAC Model • ASK Framework
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-navy mt-1">
+              Competency-Driven Learning Catalog
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-2">
+              Browse domain, functional, and behavioral competencies specifically designed for civil servants across central and state cadres.
+            </p>
+          </div>
+
+          <!-- FRAC Categories Navigation Tabs -->
+          <div id="fracTabsContainer" class="flex flex-wrap items-center justify-center gap-2 mb-6">
+            <!-- Injected via app.js -->
+          </div>
+
+          <!-- Subtitle Result Counter -->
+          <div class="flex items-center justify-between text-xs text-slate-500 mb-6 px-1">
+            <span id="searchResultsCount" class="font-semibold text-slate-700">Loading courses...</span>
+            <span class="flex items-center gap-2">
+              <span>Sort by:</span>
+              <select class="bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-700 font-semibold focus:outline-none">
+                <option>Highest Rated</option>
+                <option>Most Enrolled</option>
+                <option>Newest Release</option>
+              </select>
+            </span>
+          </div>
+
+          <!-- Course Cards Grid -->
+          <div id="coursesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Dynamic Courses Injected Here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- KARMAYOGI TALKS & WEBINARS -->
+      <section id="webinarSection" class="py-12 px-4 sm:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-saffron mb-1">
+              Live Knowledge Exchange
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-navy">
+              Karmayogi Talk Series & Masterclasses
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">
+              Direct interactions with distinguished secretaries, global experts, and policy innovators.
+            </p>
+          </div>
+        </div>
+
+        <div id="webinarsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Injected via app.js -->
+        </div>
+      </section>
+
+      <!-- INSTITUTIONAL PARTNERS / APEX ACADEMIES -->
+      <section class="py-12 px-4 sm:px-8 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto text-center">
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">
+            Powered by Apex Training Institutions of India
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 items-center">
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition text-center">
+              <div class="font-extrabold text-navy text-xs">LBSNAA</div>
+              <div class="text-[9px] text-slate-400">Mussoorie</div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition text-center">
+              <div class="font-extrabold text-navy text-xs">ISTM</div>
+              <div class="text-[9px] text-slate-400">New Delhi</div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition text-center">
+              <div class="font-extrabold text-navy text-xs">CBC</div>
+              <div class="text-[9px] text-slate-400">Commission</div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition text-center">
+              <div class="font-extrabold text-navy text-xs">DoPT</div>
+              <div class="text-[9px] text-slate-400">North Block</div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition text-center">
+              <div class="font-extrabold text-navy text-xs">NCGG</div>
+              <div class="text-[9px] text-slate-400">Good Gov</div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition text-center">
+              <div class="font-extrabold text-navy text-xs">IIPA</div>
+              <div class="text-[9px] text-slate-400">Pub Admin</div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition text-center">
+              <div class="font-extrabold text-navy text-xs">MeitY</div>
+              <div class="text-[9px] text-slate-400">Electronics/IT</div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition text-center">
+              <div class="font-extrabold text-navy text-xs">NIC</div>
+              <div class="text-[9px] text-slate-400">Gov Cloud</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MOBILE APP DOWNLOAD BANNER -->
+      <section class="py-10 px-4 sm:px-8 bg-gradient-to-r from-navy to-[#10214D] text-white">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <span class="text-xs font-bold text-amber-300 uppercase tracking-wider">Anytime, Anywhere Learning</span>
+            <h3 class="text-2xl font-bold mt-1">Download the iGOT Karmayogi Mobile Application</h3>
+            <p class="text-xs text-slate-300 mt-1 max-w-xl">
+              Access your bite-sized micro-courses, audio lectures, and digital passbook on Android and iOS devices.
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button class="px-5 py-3 bg-black/40 hover:bg-black/60 border border-white/20 rounded-xl text-xs font-semibold flex items-center gap-2 transition">
+              <span>📱</span>
+              <div class="text-left">
+                <div class="text-[9px] text-slate-400 uppercase">Available on</div>
+                <div class="font-bold text-white">Google Play</div>
+              </div>
+            </button>
+            <button class="px-5 py-3 bg-black/40 hover:bg-black/60 border border-white/20 rounded-xl text-xs font-semibold flex items-center gap-2 transition">
+              <span>🍏</span>
+              <div class="text-left">
+                <div class="text-[9px] text-slate-400 uppercase">Download on</div>
+                <div class="font-bold text-white">Apple App Store</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- VIEW 2: CIVIL SERVANT LEARNER PORTAL (Dashboard & Passbook)   -->
+    <!-- ============================================================== -->
+    <div id="dashboardView" class="hidden py-8 px-4 sm:px-8 max-w-7xl mx-auto">
+      
+      <!-- Back to public view button -->
+      <div class="mb-6 flex items-center justify-between">
+        <button onclick="document.getElementById('navHomeBtn').click()" class="text-xs font-bold text-navy hover:text-saffron flex items-center gap-1.5 transition">
+          <span>←</span>
+          <span>Back to Public Homepage</span>
+        </button>
+        <span class="text-xs bg-green-50 text-green-700 font-bold px-3 py-1 rounded-full border border-green-200">
+          ● Secure Session Active
+        </span>
+      </div>
+
+      <!-- Officer Profile Card -->
+      <div id="profileHeaderCard" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+
+      <!-- Digital Learning Passbook Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Left: My Courses & In Progress -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold text-navy flex items-center gap-2">
+              <span>📚</span>
+              <span>My Digital Learning Passbook</span>
+            </h3>
+            <span class="text-xs text-slate-500">Auto-synced with SPARROW & Service Book</span>
+          </div>
+
+          <div id="myCoursesList" class="space-y-4">
+            <!-- Injected via app.js -->
+          </div>
+        </div>
+
+        <!-- Right: AI Sarthi Recommendations & Quick Competency Radar -->
+        <div class="space-y-6">
+          
+          <!-- Competency Summary Widget -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+            <h4 class="text-sm font-bold text-slate-800 mb-3 flex items-center justify-between">
+              <span>🎯 Competency Profile (FRAC)</span>
+              <span class="text-xs text-blue-700 font-semibold">92% Target Met</span>
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <div class="flex justify-between text-slate-600 mb-1">
+                  <span>Behavioral (Ethics, Empathy)</span>
+                  <span class="font-bold text-slate-800">95%</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-purple-600 h-full rounded-full" style="width: 95%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-slate-600 mb-1">
+                  <span>Functional (GeM, GFR, Drafting)</span>
+                  <span class="font-bold text-slate-800">88%</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-emerald-600 h-full rounded-full" style="width: 88%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-slate-600 mb-1">
+                  <span>Domain (AI & Digital Governance)</span>
+                  <span class="font-bold text-slate-800">74%</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-blue-600 h-full rounded-full" style="width: 74%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Sarthi Recommendations -->
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50/50 rounded-2xl border border-blue-200/60 p-5 shadow-sm">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xl">🤖</span>
+              <div>
+                <h4 class="text-xs font-bold text-navy uppercase">AI Sarthi Recommendations</h4>
+                <p class="text-[10px] text-slate-500">Based on your role as Under Secretary (MeitY)</p>
+              </div>
+            </div>
+
+            <div class="space-y-2.5">
+              <div class="p-3 bg-white rounded-xl border border-blue-100 text-xs hover:border-blue-400 transition cursor-pointer" onclick="window.openCoursePlayer('crs-103')">
+                <div class="text-[10px] font-bold text-saffron uppercase mb-0.5">Recommended Domain Skill</div>
+                <div class="font-bold text-slate-800">Artificial Intelligence & DPI for Governance</div>
+                <div class="text-[11px] text-slate-500 mt-1">MeitY & NIC • 6h 30m</div>
+              </div>
+
+              <div class="p-3 bg-white rounded-xl border border-blue-100 text-xs hover:border-blue-400 transition cursor-pointer" onclick="window.openCoursePlayer('crs-105')">
+                <div class="text-[10px] font-bold text-emerald-600 uppercase mb-0.5">Mandatory Statutory Training</div>
+                <div class="font-bold text-slate-800">RTI Act & CPGRAMS Redressal Masterclass</div>
+                <div class="text-[11px] text-slate-500 mt-1">ISTM New Delhi • 4h 00m</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Capacity Building Commission Notice -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-4 text-xs text-slate-600">
+            <div class="flex items-center gap-2 text-navy font-bold mb-1">
+              <span>🏛</span>
+              <span>Annual Capacity Building Plan (ACBP)</span>
+            </div>
+            <p class="text-[11px] text-slate-500 leading-relaxed">
+              As per CBC mandates, all Group A and B officers must accumulate at least 40 learning hours per financial year.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ================= OFFICIAL GOVERNMENT FOOTER ================= -->
+  <footer class="bg-[#10214D] text-slate-300 text-xs border-t-4 border-saffron mt-auto">
+    <!-- Top Footer Links -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Col 1: About -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-xl font-black text-white">iGOT</span>
+          <span class="text-xl font-black text-saffron">KARMAYOGI</span>
+        </div>
+        <p class="text-[11px] text-slate-300 leading-relaxed mb-4">
+          Mission Karmayogi is the National Programme for Civil Services Capacity Building (NPCSCB) approved by the Union Cabinet to foster a professional, well-trained, and citizen-first civil service.
+        </p>
+        <div class="text-[11px] text-slate-400">
+          Managed by <strong>Karmayogi Bharat</strong> (A Section 8 SPV of Government of India)
+        </div>
+      </div>
+
+      <!-- Col 2: Useful Links -->
+      <div>
+        <h4 class="text-xs font-bold uppercase text-white tracking-wider mb-4 border-b border-white/10 pb-2">
+          Key Portals & Commissions
+        </h4>
+        <ul class="space-y-2 text-[11px]">
+          <li><a href="https://dopt.gov.in" target="_blank" class="hover:text-amber-300 transition">Department of Personnel and Training (DoPT)</a></li>
+          <li><a href="https://cbc.gov.in" target="_blank" class="hover:text-amber-300 transition">Capacity Building Commission (CBC)</a></li>
+          <li><a href="https://lbsnaa.gov.in" target="_blank" class="hover:text-amber-300 transition">LBSNAA Mussoorie</a></li>
+          <li><a href="https://istm.gov.in" target="_blank" class="hover:text-amber-300 transition">ISTM New Delhi</a></li>
+          <li><a href="https://digitalindia.gov.in" target="_blank" class="hover:text-amber-300 transition">Digital India Portal</a></li>
+          <li><a href="https://gem.gov.in" target="_blank" class="hover:text-amber-300 transition">Government e-Marketplace (GeM)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Policy & Disclosures -->
+      <div>
+        <h4 class="text-xs font-bold uppercase text-white tracking-wider mb-4 border-b border-white/10 pb-2">
+          Policies & Compliance
+        </h4>
+        <ul class="space-y-2 text-[11px]">
+          <li><a href="#" class="hover:text-amber-300 transition">Terms of Use & Accessibility Statement</a></li>
+          <li><a href="#" class="hover:text-amber-300 transition">Privacy Policy & DPDP Act Compliance</a></li>
+          <li><a href="#" class="hover:text-amber-300 transition">Hyperlinking & Copyright Policy</a></li>
+          <li><a href="#" class="hover:text-amber-300 transition">GIGW (Guidelines for Indian Gov Websites) 3.0</a></li>
+          <li><a href="#" class="hover:text-amber-300 transition">Citizen Charter</a></li>
+          <li><a href="#" class="hover:text-amber-300 transition">Cyber Security Directives (CERT-In)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Helpdesk & Support -->
+      <div>
+        <h4 class="text-xs font-bold uppercase text-white tracking-wider mb-4 border-b border-white/10 pb-2">
+          National Helpdesk
+        </h4>
+        <p class="text-[11px] text-slate-300 mb-3">
+          For technical grievances, user registration queries, or course verification:
+        </p>
+        <div class="space-y-2 text-[11px]">
+          <div>📞 <strong>Toll Free:</strong> 1800-11-2026 (Mon-Sat, 9AM-6PM)</div>
+          <div>✉️ <strong>Email:</strong> support-karmayogi@gov.in</div>
+          <div>📍 <strong>Office:</strong> Karmayogi Bharat, NDMC Building, New Delhi - 110001</div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/10 flex gap-2">
+          <button onclick="window.openLoginModal()" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg text-[10px] font-bold transition">
+            Officer Login
+          </button>
+          <button onclick="window.openRegisterModal()" class="px-3 py-1.5 bg-saffron hover:bg-orange-600 text-white rounded-lg text-[10px] font-bold transition">
+            New Registration
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright & NIC Bar -->
+    <div class="bg-black/40 py-4 px-4 sm:px-8 border-t border-white/10 text-center text-[10px] text-slate-400">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div>
+          © 2026 Karmayogi Bharat, Government of India. All Rights Reserved.
+        </div>
+        <div>
+          Designed & Hosted by <strong>National Informatics Centre (NIC)</strong> • Content Managed by <strong>Capacity Building Commission</strong>
+        </div>
+        <div>
+          Version: 4.8.2-prod • Last Updated: 27 September 2026
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODALS & OVERLAYS ================= -->
+
+  <!-- COURSE PLAYER & SYLLABUS MODAL -->
+  <div id="coursePlayerModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="coursePlayerContent" class="w-full flex justify-center">
+      <!-- Injected via app.js -->
+    </div>
+  </div>
+
+  <!-- QUIZ / ASSESSMENT MODAL -->
+  <div id="quizModal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="quizModalContent" class="w-full flex justify-center">
+      <!-- Injected via app.js -->
+    </div>
+  </div>
+
+  <!-- VERIFIABLE GOVERNMENT CERTIFICATE MODAL -->
+  <div id="certificateModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md overflow-y-auto flex items-center justify-center p-4">
+    <div id="certificateModalContent" class="w-full flex justify-center">
+      <!-- Injected via app.js -->
+    </div>
+  </div>
+
+  <!-- ================= OFFICIAL LOGIN MODAL ================= -->
+  <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl modal-animate flex flex-col">
+      <!-- Modal Header -->
+      <div class="bg-gradient-to-r from-navy to-[#10214D] text-white p-5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center text-lg">🦁</div>
+          <div>
+            <h3 class="text-base font-bold">iGOT Karmayogi Bharat</h3>
+            <p class="text-[10px] text-amber-300 font-semibold uppercase tracking-wider">Civil Services Capacity Building Portal</p>
+          </div>
+        </div>
+        <button onclick="window.closeModal('loginModal')" class="text-white hover:text-amber-300 text-xl font-bold p-1">✕</button>
+      </div>
+
+      <!-- Login Method Selector Tabs -->
+      <div class="flex border-b border-slate-200 bg-slate-50 text-xs font-bold text-slate-600">
+        <button id="tabParichayBtn" onclick="window.switchLoginTab('parichay')" class="flex-1 py-3 border-b-2 border-navy text-navy bg-white flex items-center justify-center gap-1.5 transition">
+          <span>🇮🇳 Parichay SSO</span>
+        </button>
+        <button id="tabStandardBtn" onclick="window.switchLoginTab('standard')" class="flex-1 py-3 border-b-2 border-transparent hover:text-navy flex items-center justify-center gap-1.5 transition">
+          <span>Karmayogi Login</span>
+        </button>
+      </div>
+
+      <!-- Tab 1: Parichay SSO -->
+      <div id="loginParichayTab" class="p-6">
+        <div class="bg-blue-50/80 border border-blue-200 rounded-xl p-3 mb-4 text-xs text-slate-700 flex items-start gap-2.5">
+          <span class="text-base">ℹ️</span>
+          <div>
+            <strong class="text-navy font-bold">Single Sign-On (MeriPehchan / Parichay):</strong>
+            <p class="text-[11px] text-slate-600 mt-0.5">Use your official <code class="bg-blue-100 px-1 rounded text-navy">@gov.in</code> or <code class="bg-blue-100 px-1 rounded text-navy">@nic.in</code> email to authenticate through the National Single Sign-On gateway.</p>
+          </div>
+        </div>
+
+        <form onsubmit="window.handleParichayLogin(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Official Government Email ID</label>
+            <input type="email" id="parichayEmail" required placeholder="rajesh.kumar@gov.in" value="rajesh.kumar@gov.in" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy focus:ring-1 focus:ring-navy" />
+            <p class="text-[10px] text-slate-400 mt-1">Accepts @gov.in, @nic.in, or affiliated institutional domains.</p>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Parichay / e-Office Password</label>
+            <input type="password" id="parichayPassword" required placeholder="••••••••••••" value="GovPassword@2026" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy focus:ring-1 focus:ring-navy" />
+          </div>
+
+          <div class="flex items-center justify-between text-xs">
+            <label class="flex items-center gap-2 text-slate-600 cursor-pointer">
+              <input type="checkbox" checked class="rounded text-navy focus:ring-navy" />
+              <span>Remember on this workstation</span>
+            </label>
+            <a href="#" onclick="alert('Password reset instructions dispatched to your registered email.'); return false;" class="text-navy font-semibold hover:underline">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="w-full py-3 bg-navy hover:bg-navyDeep text-white text-xs font-bold rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center gap-2">
+            <span>Authenticate with Parichay SSO</span>
+            <span>→</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Tab 2: Standard iGOT Login -->
+      <div id="loginStandardTab" class="p-6 hidden">
+        <!-- Toggle Password or OTP -->
+        <div class="flex justify-center gap-4 mb-4 text-xs font-bold">
+          <label class="flex items-center gap-1.5 cursor-pointer text-slate-700">
+            <input type="radio" name="loginType" value="password" checked onchange="window.toggleLoginSubtype('password')" />
+            <span>Login with Password</span>
+          </label>
+          <label class="flex items-center gap-1.5 cursor-pointer text-slate-700">
+            <input type="radio" name="loginType" value="otp" onchange="window.toggleLoginSubtype('otp')" />
+            <span>Login with OTP</span>
+          </label>
+        </div>
+
+        <form onsubmit="window.handleStandardLogin(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Username / Email / Mobile Number</label>
+            <input type="text" id="standardUserIdentifier" required placeholder="Email or 10-digit mobile number" value="officer.rajesh@karmayogi.gov.in" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy focus:ring-1 focus:ring-navy" />
+          </div>
+
+          <div id="passwordFieldContainer">
+            <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
+            <input type="password" id="standardPassword" placeholder="••••••••••••" value="Karmayogi@2026" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy focus:ring-1 focus:ring-navy" />
+          </div>
+
+          <div id="otpFieldContainer" class="hidden">
+            <div class="flex items-center justify-between mb-1">
+              <label class="block text-xs font-bold text-slate-700">One-Time Password (OTP)</label>
+              <button type="button" onclick="window.sendLoginOtp()" class="text-xs font-bold text-saffron hover:underline">Get OTP on SMS</button>
+            </div>
+            <input type="text" id="standardOtp" placeholder="6-digit OTP (Try: 123456)" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy focus:ring-1 focus:ring-navy font-mono" />
+          </div>
+
+          <!-- Captcha -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Security Verification</label>
+            <div class="flex items-center gap-3">
+              <div id="loginCaptchaText" class="captcha-display px-4 py-2 border border-slate-300 rounded-xl font-bold text-slate-800 text-sm tracking-widest">
+                8 K 2 Y 9
+              </div>
+              <button type="button" onclick="window.refreshLoginCaptcha()" title="Refresh Captcha" class="p-2 border border-slate-200 rounded-xl hover:bg-slate-100 text-xs">
+                🔄
+              </button>
+              <input type="text" id="loginCaptchaInput" required placeholder="Enter captcha" value="8K2Y9" class="flex-1 text-xs px-3 py-2 rounded-xl border border-slate-300 uppercase font-mono focus:outline-none focus:border-navy" />
+            </div>
+          </div>
+
+          <button type="submit" class="w-full py-3 bg-gradient-to-r from-saffron to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xs font-bold rounded-xl shadow-md transition">
+            Log In to iGOT Karmayogi
+          </button>
+        </form>
+      </div>
+
+      <!-- Modal Footer Switch to Register -->
+      <div class="p-4 bg-slate-50 border-t border-slate-200 text-center text-xs text-slate-600">
+        <span>New civil servant on iGOT?</span>
+        <button onclick="window.openRegisterModal()" class="text-navy font-bold hover:underline ml-1">
+          Register here →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= OFFICIAL REGISTRATION MODAL ================= -->
+  <div id="registerModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm overflow-y-auto flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl modal-animate my-8 flex flex-col">
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-navy via-[#1B357D] to-saffron text-white p-6 flex items-center justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xl">🏛</span>
+            <span class="text-xs uppercase font-extrabold tracking-wider bg-black/20 px-2 py-0.5 rounded text-amber-300">New Officer Onboarding</span>
+          </div>
+          <h3 class="text-lg font-bold">Civil Servant Registration Portal</h3>
+          <p class="text-xs text-blue-100">National Programme for Civil Services Capacity Building (NPCSCB)</p>
+        </div>
+        <button onclick="window.closeModal('registerModal')" class="text-white hover:text-amber-300 text-2xl font-bold p-1">✕</button>
+      </div>
+
+      <!-- Registration Form -->
+      <form onsubmit="window.handleRegistrationSubmit(event)" class="p-6 space-y-5 text-xs">
+        
+        <!-- Section 1: Personal Details -->
+        <div>
+          <h4 class="font-bold text-navy uppercase tracking-wider text-[11px] mb-3 border-b border-slate-200 pb-1 flex items-center gap-1.5">
+            <span>1. Personal & Contact Information</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">First Name *</label>
+              <input type="text" id="regFirstName" required placeholder="e.g. Suresh" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy" />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Last Name *</label>
+              <input type="text" id="regLastName" required placeholder="e.g. Sharma" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy" />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Official Government Email ID *</label>
+              <input type="email" id="regEmail" required placeholder="suresh.sharma@gov.in" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy" />
+              <span class="text-[10px] text-slate-400">Must be an official .gov.in, .nic.in or institutional email.</span>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Mobile Number (For SMS OTP) *</label>
+              <input type="tel" id="regMobile" required placeholder="9876543210" pattern="[0-9]{10}" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy font-mono" />
+              <span class="text-[10px] text-slate-400">10-digit mobile number for identity verification.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Cadre & Service Affiliation -->
+        <div>
+          <h4 class="font-bold text-navy uppercase tracking-wider text-[11px] mb-3 border-b border-slate-200 pb-1 flex items-center gap-1.5">
+            <span>2. Service, Cadre & Posting Information</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Ministry / Department / Org *</label>
+              <select id="regMinistry" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy font-medium bg-white">
+                <option value="">Select Ministry / Department</option>
+                <option value="Ministry of Electronics & Information Technology">Ministry of Electronics & Information Technology (MeitY)</option>
+                <option value="Department of Personnel and Training (DoPT)">Department of Personnel and Training (DoPT)</option>
+                <option value="Ministry of Health and Family Welfare">Ministry of Health and Family Welfare</option>
+                <option value="Ministry of Finance">Ministry of Finance</option>
+                <option value="Ministry of Defence">Ministry of Defence</option>
+                <option value="Ministry of Home Affairs">Ministry of Home Affairs</option>
+                <option value="Ministry of Railways">Ministry of Railways</option>
+                <option value="State Civil Administration">State Civil Administration / UT</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Service Cadre *</label>
+              <select id="regCadre" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy font-medium bg-white">
+                <option value="">Select Service / Cadre</option>
+                <option value="Indian Administrative Service (IAS)">Indian Administrative Service (IAS)</option>
+                <option value="Indian Police Service (IPS)">Indian Police Service (IPS)</option>
+                <option value="Central Secretariat Service (CSS)">Central Secretariat Service (CSS)</option>
+                <option value="Indian Foreign Service (IFS)">Indian Foreign Service (IFS)</option>
+                <option value="Indian Revenue Service (IRS)">Indian Revenue Service (IRS)</option>
+                <option value="Central Subordinate Services">Central Subordinate Services (Group B/C)</option>
+                <option value="State Civil Services (SCS)">State Civil Services (SCS)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Current Designation *</label>
+              <input type="text" id="regDesignation" required placeholder="e.g. Under Secretary / Assistant Director" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy" />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Office Location / State *</label>
+              <input type="text" id="regLocation" required placeholder="e.g. New Delhi" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Password & Agreement -->
+        <div>
+          <h4 class="font-bold text-navy uppercase tracking-wider text-[11px] mb-3 border-b border-slate-200 pb-1 flex items-center gap-1.5">
+            <span>3. Security Credentials</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Create Password *</label>
+              <input type="password" id="regPassword" required placeholder="Min 8 characters with numbers" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy" />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Confirm Password *</label>
+              <input type="password" id="regConfirmPassword" required placeholder="Re-type password" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:border-navy" />
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-start gap-2.5 bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <input type="checkbox" id="regTerms" required class="mt-0.5 rounded text-navy focus:ring-navy" />
+            <label for="regTerms" class="text-[11px] text-slate-600 leading-relaxed cursor-pointer">
+              I hereby certify that I am a bonafide official of the Government of India / State Government, and consent to syncing my learning records with the <strong>Digital Learning Passbook</strong> under Mission Karmayogi (NPCSCB).
+            </label>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-200">
+          <div class="text-slate-600">
+            Already registered? <button type="button" onclick="window.openLoginModal()" class="text-navy font-bold hover:underline">Log In here</button>
+          </div>
+          <div class="flex items-center gap-3 w-full sm:w-auto">
+            <button type="button" onclick="window.closeModal('registerModal')" class="flex-1 sm:flex-none px-4 py-2.5 border border-slate-300 text-slate-700 font-semibold rounded-xl hover:bg-slate-100 transition">
+              Cancel
+            </button>
+            <button type="submit" class="flex-1 sm:flex-none px-6 py-2.5 bg-gradient-to-r from-navy to-blue-900 hover:from-blue-900 hover:to-navyDeep text-white font-bold rounded-xl shadow-md transition">
+              Verify & Activate Account →
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= FLOATING KARMAYOGI AI SARTHI BOT ================= -->
+  <div id="aiChatWidget" class="fixed bottom-6 right-6 z-40">
+    <!-- Chat Toggle Trigger Button -->
+    <button 
+      id="aiSarthiToggleBtn" 
+      class="ai-sarthi-button text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 hover:scale-105 transition-all duration-300 font-bold text-xs"
+      title="Ask Karmayogi AI Sarthi"
+    >
+      <span class="text-xl">🤖</span>
+      <span class="hidden md:inline pr-1">AI Sarthi Assistant</span>
+    </button>
+
+    <!-- Chat Interactive Window -->
+    <div 
+      id="aiChatWindow" 
+      class="hidden absolute bottom-16 right-0 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-[460px] animate-fade-in"
+    >
+      <!-- Chat Header -->
+      <div class="bg-gradient-to-r from-navy to-blue-900 text-white p-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-amber-400 text-blue-950 flex items-center justify-center text-sm font-bold">
+            🤖
+          </div>
+          <div>
+            <h4 class="text-xs font-bold leading-tight">Karmayogi AI Sarthi</h4>
+            <div class="text-[10px] text-amber-200 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+              <span>Online • Civil Service Tutor</span>
+            </div>
+          </div>
+        </div>
+        <button id="aiChatCloseBtn" class="text-white hover:text-amber-300 text-lg font-bold">
+          ✕
+        </button>
+      </div>
+
+      <!-- Chat Messages Scroll Container -->
+      <div id="aiChatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50/70">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Quick Prompt Suggestion Chips -->
+      <div class="p-2 bg-white border-t border-slate-100 flex gap-1.5 overflow-x-auto text-[10px]">
+        <button onclick="window.askSarthiQuick('Recommend courses for Ethics')" class="px-2.5 py-1 bg-slate-100 hover:bg-blue-100 text-slate-700 rounded-full whitespace-nowrap transition">
+          Ethics Rules
+        </button>
+        <button onclick="window.askSarthiQuick('Explain GeM 4.0 procurement')" class="px-2.5 py-1 bg-slate-100 hover:bg-blue-100 text-slate-700 rounded-full whitespace-nowrap transition">
+          GeM Rules
+        </button>
+        <button onclick="window.askSarthiQuick('What is the FRAC framework?')" class="px-2.5 py-1 bg-slate-100 hover:bg-blue-100 text-slate-700 rounded-full whitespace-nowrap transition">
+          FRAC Model
+        </button>
+      </div>
+
+      <!-- Chat Input Field -->
+      <div class="p-3 bg-white border-t border-slate-200 flex items-center gap-2">
+        <input 
+          type="text" 
+          id="aiChatInput" 
+          placeholder="Ask a question about courses, rules..." 
+          class="flex-1 text-xs px-3 py-2 bg-slate-100 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500"
+        />
+        <button id="aiSendBtn" class="p-2 bg-navy hover:bg-blue-900 text-white rounded-xl transition text-xs font-bold">
+          ➤
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
